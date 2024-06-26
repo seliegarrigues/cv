@@ -6,21 +6,21 @@ import Hobby from "../components/Hobby";
 import Language from "../components/Language";
 import Experience from "../components/Experience";
 import Education from "../components/Education";
-import ProfilePicture from "../components/ProfilPIcture";
+
 // import other section components here
 
 const cv = ({ cvData }) => {
   return (
-    <div className="cv-container">
-      <ProfilePicture />
-      <div className="cv-container">
+    <div className=" flex cv-container">
+     
+      <div className=" flex-row cv-container">
         <Contact />
         <Skill />
         <Language />
         <Hobby />
       </div>
 
-      <div className="cv-container">
+      <div className="cv-container flex-row">
         <Experience />
         <Education />
       </div>
