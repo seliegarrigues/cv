@@ -22,7 +22,7 @@ export default function Skill() {
         Compétences
       </h2>
       <ul>
-        {skills.length > 0 && skills.map(item => <li key={item._id}>{item}</li>)}
+        {skills.length > 0 && skills.map(item => <li key={item._id}>{item.skill}</li>)}
       </ul>
     </div>
   )

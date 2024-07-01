@@ -16,8 +16,8 @@ const cv = ({ cvData }) => {
       <div className=" flex-row cv-container">
         <Contact />
         <Skill />
-        <Language />
-        <Hobby />
+         <Language /> 
+        {/* <Hobby /> */}
       </div>
 
       <div className="cv-container flex-row">

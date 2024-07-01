@@ -1,3 +1,4 @@
+//src/page/Admin.jsx
 import React from 'react'
 import AdminContact from '../components/admin/AdminContact'
 
