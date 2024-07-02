@@ -1,5 +1,9 @@
 // src/components/admin/AdminContact.jsx
 import React, { useEffect, useState } from 'react'
+import { GrValidate } from "react-icons/gr";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { CiMobile1 } from "react-icons/ci";
+import { FaRegAddressCard } from "react-icons/fa6";
 
 export default function AdminContact() {
     const [nom, setNom]= useState('')
@@ -38,7 +42,7 @@ export default function AdminContact() {
   return (
     <form onSubmit={handleSubmit}>
             <div className=''>
-                <label>Tel</label>
+                <label className='flex'><CiMobile1 size={32} />Tel</label>
                 <input
                     className="input input-bordered input-primary w-full"
                     type="text"
@@ -46,7 +50,7 @@ export default function AdminContact() {
                     onChange={(e) => setTel(e.target.value)} />
             </div>
             <div className=''>
-                <label>Email</label>
+                <label className='flex'><MdOutlineAlternateEmail size={24} /> email</label>
                 <input
                     className="input input-bordered input-primary w-full"
                     type="text"
@@ -54,14 +58,14 @@ export default function AdminContact() {
                     onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className=''>
-                <label>Adresse</label>
+                <label className='flex'> <FaRegAddressCard size={24} />Adresse</label>
                 <input
                     className="input input-bordered input-primary w-full"
                     type="text"
                     value={adresse}
                     onChange={(e) => setAdresse(e.target.value)} />
             </div>
-            <button type="submit">Valider</button>
+            <button className='flex' type="submit"><GrValidate size={24} /> Valider</button>
         </form>
   )
 }

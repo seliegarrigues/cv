@@ -1,5 +1,8 @@
 // src/components/Education.jsx
 import React from 'react';
+import { MdOutlineCastForEducation } from "react-icons/md";
+import { GiSkills } from "react-icons/gi";
+import { FaGraduationCap } from "react-icons/fa6";
 
 const Education = () => {
   const education = [
@@ -12,15 +15,15 @@ const Education = () => {
     {
       years: '2024',
       institution: 'La fabrique Numérique Paloise',
-      degree: 'Bootcamp développeur web Full-Stack',
-      skills: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+      degree: 'Bootcamp développeur web Full-Stack React',
+      skills: ['', '', '', ''],
     },
   ];
 
   return (
     <div className="p-6 bg-gray-100 rounded-lg shadow-lg">
-      <h2 className="text-2xl text-center font-bold bg-[#313B6D] text-white rounded-lg p-1 mb-5">
-        Education
+      <h2 className="text-2xl text-center font-bold bg-[#313B6D] text-white rounded-lg p-1 mb-5"><MdOutlineCastForEducation />
+        Education <FaGraduationCap />
       </h2>
       <ul>
         {education.map((item, index) => (
@@ -28,7 +31,7 @@ const Education = () => {
             <h3 className="font-bold">{item.institution}</h3>
             <p>{item.degree}</p>
             <p>{item.years}</p>
-            <h4 className="font-bold">Skills:</h4>
+            <h4 className="font-bold"><GiSkills />Skills:</h4>
             <ul className="list-disc list-inside">
               {item.skills.map((skill, skillIndex) => (
                 <li key={skillIndex}>{skill}</li>

@@ -17,7 +17,7 @@ const cv = ({ cvData }) => {
         <Contact />
         <Skill />
          <Language /> 
-        {/* <Hobby /> */}
+         <Hobby /> 
       </div>
 
       <div className="cv-container flex-row">

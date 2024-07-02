@@ -1,6 +1,9 @@
 // src/components/Contact.js
 import { useState, useEffect } from "react";
 import ProfilePicture from "../components/ProfilPIcture";
+import { ImMobile } from "react-icons/im";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { LiaAddressCard } from "react-icons/lia";
 const BASE_URL = "http://localhost:4007";
 
 export default function Contact() {
@@ -29,15 +32,15 @@ export default function Contact() {
           </h2>
           <table>
             <tr className="mb-2">
-              <th className="font-bold">Téléphone: </th>
+              <th className="font-bold"> <ImMobile />Téléphone: </th>
               <td>{contact[0].tel}</td>
             </tr>
             <tr className="mb-2">
-              <th className="font-bold">Courriel: </th>
+              <th className="font-bold"> <MdOutlineAlternateEmail />Courriel: </th>
               <td>{contact[0].email}</td>
             </tr>
             <tr className="mb-2">
-              <th className="font-bold">Adresse: </th>
+              <th className="font-bold"> <LiaAddressCard />Adresse: </th>
               <td>{contact[0].address}</td>
             </tr>
           </table>
