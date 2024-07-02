@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import { TbMessageLanguage } from "react-icons/tb";
 
+const url = 'http://localhost:4007'
+
 export default function Language() {
   const [langues, setLangues] = useState([])
 
   async function fetchLangue() {
-    const response = await fetch('http://localhost:4007/langue') // declare une variable
+    const response = await fetch(`${url}/langue`) // declare une variable
     const data = await response.json() // parse les données de réponse
     setLangues(data)
   }
@@ -21,8 +23,15 @@ export default function Language() {
         Langues
       </h2>
       <table>
-        {langues.map(item => <tr key={item._id}><td>{item.name}</td> <td>{item.level}</td></tr>)} 
-       
+        <tbody>
+        {langues.map(item => 
+        <tr key={item._id}>
+          
+          <th className='p-2 font-size text 2xl font-bold'>{item.name}</th> 
+          <td className='p-2 border'>{item.level}</td>
+          
+          </tr>)} 
+        </tbody>
       </table> 
     </div>
   )

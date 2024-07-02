@@ -65,7 +65,7 @@ export default function AdminSkill() {
 
   return (
     <div className="flex flex-col gap-1">
-      <h2 className="text text-3xl text-center bg-slate-400">Compétences</h2>
+      <h2 className="text text-3xl text-center bg-[#313B6D]">Compétences</h2>
       {!isAdd && ( // si la valeur de isAdd n'est pas true donc False, on lance l'action
         <button onClick={addSkill} className="btn btn-primary btn-sm my-1">
           <GrAdd size={24} color="white" title="Ajouter" /> une compétence
