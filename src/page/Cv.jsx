@@ -5,7 +5,7 @@ import Skill from "../components/Skill";
 import Hobby from "../components/Hobby";
 import Language from "../components/Language";
 import Experience from "../components/Experience";
-import Education from "../components/Education";
+import Formation from "../components/Formation";
 
 // import other section components here
 
@@ -22,7 +22,7 @@ const cv = ({ cvData }) => {
 
       <div className="cv-container flex-row">
         <Experience />
-        <Education />
+        <Formation />
       </div>
     </div>
   );

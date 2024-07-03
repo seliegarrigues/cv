@@ -13,10 +13,11 @@ export default function Admin() {
 
 function handleSubmit (e) {
   e.preventDefault()
+  // par simplicité mdp en dur
   if (username ==="elise" && password==="azerty"){
     setIslogged(true)
   } else {
-    alert ('lesidentifiants sont incorrects')
+    alert ('les identifiants sont incorrects')
   }
 }
 

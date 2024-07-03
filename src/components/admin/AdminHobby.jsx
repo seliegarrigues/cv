@@ -1,3 +1,4 @@
+//src/components/admin/AdminHobby.jsx
 import { useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { GiSave } from "react-icons/gi";

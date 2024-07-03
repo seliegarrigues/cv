@@ -65,7 +65,7 @@ export default function AdminContact() {
                     value={adresse}
                     onChange={(e) => setAdresse(e.target.value)} />
             </div>
-            <button className='flex' type="submit"><GrValidate size={24} /> Valider</button>
+            <button className='flex justify-center' type="submit"><GrValidate size={24} /> Valider</button>
         </form>
   )
 }

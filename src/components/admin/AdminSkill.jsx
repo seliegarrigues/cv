@@ -1,8 +1,10 @@
+// src/components/admin/AdminSkill.jsx
 import React, { useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { GiSave } from "react-icons/gi";
 import { MdOutlineCancel } from "react-icons/md";
 import { GrAdd } from "react-icons/gr";
+import { enqueueSnackbar } from "notistack";
 
 const url = "http://localhost:4007";
 
@@ -30,7 +32,14 @@ export default function AdminSkill() {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+     enqueueSnackbar("une compétence a été supprimée", {
+      variant:'error',
+      autoHideDuration:2000,
+    anchorOrigin:{
+      horizontal:"right",
+      vertical:"top"
+    }
+    })
       fetchSkill(); // Refresh the skills list after deletion
     }
   }
@@ -42,19 +51,27 @@ export default function AdminSkill() {
       const response = await fetch(`${url}/skill`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/icon",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ competence }),
+        body: JSON.stringify({ skill: competence }), // Corrected the object syntax
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log(data.message);
+        enqueueSnackbar(data.message, {
+          variant: "success",
+          autoHideDuration: 2000,
+          anchorOrigin: {
+            horizontal: "center",
+            vertical: "top",
+          },
+        });
         fetchSkill();
         setCompetence("");
       }
     }
   }
-
+  
   function handleCancel() {
     setIsAdd(false);
   }
