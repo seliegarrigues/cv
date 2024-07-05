@@ -13,7 +13,7 @@ export default function AdminContact() {
     const [adresse, setAdresse]= useState('')
 
     async function fetchContact(){
-        const response = await fetch ('http://localhost:4007/contact')
+        const response = await fetch ('https://cv-api-6kin.onrender.com/contact')
         const data = await response.json()
         console.log(data);
         setNom(data[0].nom)
@@ -29,7 +29,7 @@ export default function AdminContact() {
     function handleSubmit (event){
         event.preventDefault()
         console.log(tel, email, adresse);
-        fetch('http://localhost:4007/contact', {
+        fetch('https://cv-api-6kin.onrender.com/contact', {
             method: 'POST',
             headers : {
                 "Content-Type": "application/json"

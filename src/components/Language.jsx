@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { TbMessageLanguage } from "react-icons/tb";
 
-const url = 'http://localhost:4007'
+const url = 'https://cv-api-6kin.onrender.com'
 
 export default function Language() {
   const [langues, setLangues] = useState([])

@@ -4,7 +4,7 @@ import { MdOutlineCastForEducation } from "react-icons/md";
 import { GiSkills } from "react-icons/gi";
 import { FaGraduationCap } from "react-icons/fa6";
 
-const url = 'http://localhost:4007'
+const url = 'https://cv-api-6kin.onrender.com'
 
 const Education = () => {
   const [formations, setFormations] = useState([])

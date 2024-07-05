@@ -5,7 +5,7 @@ import { GiSave } from "react-icons/gi";
 import { MdOutlineCancel } from "react-icons/md";
 import { GrAdd } from "react-icons/gr";
 
-const BASE_URL = "http://localhost:4007";
+const BASE_URL = "https://cv-api-6kin.onrender.com";
 
 export default function AdminHobby() {
   const [hobbies, setHobbies] = useState([]);
@@ -44,7 +44,7 @@ export default function AdminHobby() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ hobby }),
+        body: JSON.stringify({ description:hobby }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -90,7 +90,7 @@ export default function AdminHobby() {
       )}
       {hobbies.map((item) => (
         <div key={item._id} className="flex justify-between items-center">
-          <p>{item.hobby}</p>
+          <p>{item.description}</p>
          
           <button
             onClick={() => handleDelete(item._id)}

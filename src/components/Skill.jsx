@@ -1,6 +1,6 @@
 // src/ components/ Skill.jsx
 import {useState, useEffect} from 'react'
-const BASE_URL = "http://localhost:4007"
+const BASE_URL = "https://cv-api-6kin.onrender.com"
 
 export default function Skill() {
   const [skills, setSkills] = useState([])

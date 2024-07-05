@@ -6,7 +6,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { GrAdd } from "react-icons/gr";
 import { enqueueSnackbar } from "notistack";
 
-const url = "http://localhost:4007";
+const url = "https://cv-api-6kin.onrender.com";
 
 export default function AdminSkill() {
   const [skills, setSkills] = useState([]);

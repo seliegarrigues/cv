@@ -4,7 +4,7 @@ import ProfilePicture from "../components/ProfilPIcture";
 import { ImMobile } from "react-icons/im";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { LiaAddressCard } from "react-icons/lia";
-const BASE_URL = "http://localhost:4007";
+const BASE_URL = "https://cv-api-6kin.onrender.com";
 
 export default function Contact() {
   const [contact, setContact] = useState([]); // oussama il ecrit useState([])

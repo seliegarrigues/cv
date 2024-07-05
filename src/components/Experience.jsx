@@ -1,7 +1,7 @@
  // src/ components/Experience.jsx
  import { useState, useEffect } from 'react'
 
-const url = 'http://localhost:4007'
+const url = 'https://cv-api-6kin.onrender.com'
 
 export default function Experience
 () {

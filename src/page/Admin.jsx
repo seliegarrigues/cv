@@ -5,6 +5,7 @@ import AdminSkill from '../components/admin/AdminSkill'
 import AdminLangue from '../components/admin/AdminLangue'
 import AdminHobby from '../components/admin/AdminHobby'
 import Login from './Login'
+import AdminFormation from '../components/admin/AdminFormation'
 
 export default function Admin() {
   const [username,setUsername]= useState('')
@@ -26,16 +27,16 @@ function handleSubmit (e) {
 
 
 
-  if (!islogged){ // une fonction doit retourner quelque chose soit is logged soit la div suivante
-    return(
+  // if (!islogged){ // une fonction doit retourner quelque chose soit is logged soit la div suivante
+  //   return(
      
-      <Login username={username} 
-      password={password} 
-      setUsername={(e)=>setUsername(e.target.value)} 
-      setPassword={(e)=>setPassword (e.target.value)} 
-      handleSubmit = {handleSubmit}/>
-    )
-  }
+  //     <Login username={username} 
+  //     password={password} 
+  //     setUsername={(e)=>setUsername(e.target.value)} 
+  //     setPassword={(e)=>setPassword (e.target.value)} 
+  //     handleSubmit = {handleSubmit}/>
+  //   )
+  // }
   return (
     <div className='flex gap-5 p-5 max-md:flex-col'>
       <div>
@@ -43,6 +44,9 @@ function handleSubmit (e) {
         <AdminSkill/>
         <AdminLangue/>
         <AdminHobby/>
+      </div>
+      <div className='flex-row'>
+        <AdminFormation/>
       </div>
         
     </div>
