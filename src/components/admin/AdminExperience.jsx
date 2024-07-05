@@ -69,7 +69,7 @@ export default function AdminExperience() {
   return (
     
     <div>
-    <h2>className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2"
+    <h2 className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2">
     Expériences</h2>
     {!isAdd && (
         <button onClick={addExperience} type="button" className='btn btn-sm'>
