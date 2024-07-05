@@ -6,6 +6,7 @@ import AdminLangue from '../components/admin/AdminLangue'
 import AdminHobby from '../components/admin/AdminHobby'
 import Login from './Login'
 import AdminFormation from '../components/admin/AdminFormation'
+import AdminExperience from '../components/admin/AdminExperience'
 
 export default function Admin() {
   const [username,setUsername]= useState('')
@@ -47,6 +48,7 @@ function handleSubmit (e) {
       </div>
       <div className='flex-row'>
         <AdminFormation/>
+        <AdminExperience/>
       </div>
         
     </div>
