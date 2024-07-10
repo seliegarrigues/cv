@@ -15,8 +15,7 @@ export default function Admin() {
 
 function handleSubmit (e) {
   e.preventDefault()
-  // par simplicité mdp en dur
-  if (username ==="elise" && password==="azerty"){
+  if (username === localStorage.getItem('username') && password === localStorage.getItem('password')){
     setIslogged(true)
   } else {
     alert ('les identifiants sont incorrects')
