@@ -60,24 +60,31 @@ export default function AdminExperience() {
       }
     }
   }
+
   function handleCancel() {
     setIsAdd(false);
   }
+
   function addExperience() {
     setIsAdd(true);
   }
+
   return (
-    <div>
-      <h2 className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2">
+    <div className="space-y-4">
+      <h2 className="text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl">
         Expériences
       </h2>
       {!isAdd && (
-        <button onClick={addExperience} type="button" className="btn btn-sm">
+        <button
+          onClick={addExperience}
+          type="button"
+          className="btn btn-sm flex items-center justify-center"
+        >
           <GrAdd size={24} color="blue" title="Ajouter" />
         </button>
       )}
       {isAdd && (
-        <form className='"flex gap-2' onSubmit={handleSave}>
+        <form className="flex flex-col md:flex-row gap-2" onSubmit={handleSave}>
           <input
             placeholder="Ajouter une nouvelle Company"
             type="text"
@@ -110,32 +117,31 @@ export default function AdminExperience() {
             name="position"
             value={position}
           />
-
-          <button onClick={handleSave}>
-            <GiSave size={24} color="green" />
-          </button>
-          <button onClick={handleCancel}>
-            <MdOutlineCancel size={24} />
-          </button>
+          <div className="flex gap-2">
+            <button onClick={handleSave} className="btn btn-sm btn-success">
+              <GiSave size={24} color="white" />
+            </button>
+            <button onClick={handleCancel} className="btn btn-sm btn-error">
+              <MdOutlineCancel size={24} color="white" />
+            </button>
+          </div>
         </form>
       )}
-      <div className="w-full">
-        <div>
-          {experiences.map((item) => (
-            <div key={item._id}>
-              <p className="p-2">{item.company}</p>
-              <p className="p-2">{item.position}</p>
-              <p className="p-2">{item.years}</p>
-              <p className="p-2">{item.mission}</p>
-              <button
-                onClick={() => handleDelete(item._id)}
-                className="btn btn-primary btn-sm my-1"
-              >
-                <RiDeleteBinLine size={24} color="white" />
-              </button>
-            </div>
-          ))}
-        </div>
+      <div className="w-full space-y-4">
+        {experiences.map((item) => (
+          <div key={item._id} className="border border-gray-300 rounded-lg p-4">
+            <p className="p-2">{item.company}</p>
+            <p className="p-2">{item.position}</p>
+            <p className="p-2">{item.years}</p>
+            <p className="p-2">{item.mission}</p>
+            <button
+              onClick={() => handleDelete(item._id)}
+              className="btn btn-primary btn-sm my-1"
+            >
+              <RiDeleteBinLine size={24} color="white" />
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

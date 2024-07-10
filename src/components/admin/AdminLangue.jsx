@@ -31,20 +31,19 @@ export default function AdminLangue() {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      fetchLangue(); // rafraichit la liste apres la suppression
+      fetchLangue();
     }
   }
 
   async function handleSave() {
-    if (name !== "" && level !=="") {
-      console.log(name); // Log la nouvelle langue
-      // Add code to save the new language to the server
+    if (name !== "" && level !== "") {
+      console.log(name);
       const response = await fetch(`${url}/langue`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name,level}), // ou ({name: xxx, level: XXX})
+        body: JSON.stringify({ name, level }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -65,15 +64,20 @@ export default function AdminLangue() {
   }
 
   return (
-    <div>
-      <h2 className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2">
+    <div className="space-y-4">
+      <h2 className="text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl">
         Langues
       </h2>
-      {! isAdd && (<button onClick={addLangue} className="btn btn-sm">
-        <GrAdd size={24} color="blue" title="Ajouter" />
-      </button>)}
+      {!isAdd && (
+        <button
+          onClick={addLangue}
+          className="btn btn-sm flex items-center justify-center"
+        >
+          <GrAdd size={24} color="blue" title="Ajouter" />
+        </button>
+      )}
       {isAdd && (
-        <div className="flex gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <input
             placeholder="Ajouter une nouvelle langue"
             type="text"
@@ -82,7 +86,7 @@ export default function AdminLangue() {
             value={name}
           />
           <select
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered w-full"
             onChange={(e) => setLevel(e.target.value)}
             value={level}
           >
@@ -94,32 +98,36 @@ export default function AdminLangue() {
             <option value="Avancé">Avancé</option>
             <option value="Maternelle">Maternelle</option>
           </select>
-          <button onClick={handleSave}>
-            <GiSave size={24} color="green" />
-          </button>
-          <button onClick={handleCancel}>
-            <MdOutlineCancel size={24} />
-          </button>
+          <div className="flex gap-2">
+            <button onClick={handleSave} className="btn btn-sm btn-success">
+              <GiSave size={24} color="white" />
+            </button>
+            <button onClick={handleCancel} className="btn btn-sm btn-error">
+              <MdOutlineCancel size={24} color="white" />
+            </button>
+          </div>
         </div>
       )}
-      <table className="w-full">
-        <tbody>
-          {langues.map((item) => (
-            <tr key={item._id}>
-              <td className="p-2">{item.name}</td>
-              <td className="p-2">{item.level}</td>
-              <td className="p-2">
-                <button
-                  onClick={() => handleDelete(item._id)}
-                  className="btn btn-primary btn-sm my-1"
-                >
-                  <RiDeleteBinLine size={24} color="white" />
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="table w-full">
+          <tbody>
+            {langues.map((item) => (
+              <tr key={item._id}>
+                <td className="p-2">{item.name}</td>
+                <td className="p-2">{item.level}</td>
+                <td className="p-2">
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="btn btn-primary btn-sm"
+                  >
+                    <RiDeleteBinLine size={24} color="white" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

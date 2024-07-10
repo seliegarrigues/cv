@@ -4,7 +4,7 @@ import { GiSave } from "react-icons/gi";
 import { MdOutlineCancel } from "react-icons/md";
 import { GrAdd } from "react-icons/gr";
 
-const url ="https://cv-api-6kin.onrender.com";
+const url = "https://cv-api-6kin.onrender.com";
 
 export default function AdminFormation() {
   const [formations, setFormations] = useState([]);
@@ -17,7 +17,7 @@ export default function AdminFormation() {
     const response = await fetch(`${url}/formation`);
     const data = await response.json();
     console.log(data);
-    setFormations(data); // Update the state with the fetched data
+    setFormations(data);
   }
 
   useEffect(() => {
@@ -37,26 +37,23 @@ export default function AdminFormation() {
   }
 
   async function handleSave() {
-    // if (name !== "" && level !== "" && year !=="") {
-      console.log(name);
-      const response = await fetch(`${url}/formation`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name,level, year }), // or ({name : xxx, level: xxx})
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        fetchFormation();
-        setName("");
-        setLevel("");
-        setYear("");
-       
-        setIsAdd(false); // Hide the add form after saving
-      }
-    // }
+    console.log(name);
+    const response = await fetch(`${url}/formation`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, level, year }),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      fetchFormation();
+      setName("");
+      setLevel("");
+      setYear("");
+      setIsAdd(false);
+    }
   }
 
   function handleCancel() {
@@ -68,17 +65,20 @@ export default function AdminFormation() {
   }
 
   return (
-    <div>
-      <h2 className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2">
+    <div className="space-y-4">
+      <h2 className="text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl">
         Formation
       </h2>
       {!isAdd && (
-        <button onClick={addFormation} className="btn btn-sm">
+        <button
+          onClick={addFormation}
+          className="btn btn-sm flex items-center justify-center"
+        >
           <GrAdd size={24} color="blue" title="Ajouter" />
         </button>
       )}
       {isAdd && (
-        <div className='"flex gap-2'>
+        <div className="flex flex-col md:flex-row gap-2">
           <input
             placeholder="Ajouter une nouvelle formation"
             type="text"
@@ -100,35 +100,30 @@ export default function AdminFormation() {
             onChange={(e) => setYear(e.target.value)}
             value={year}
           />
-          <button onClick={handleSave}>
-            <GiSave size={24} color="green" />
-          </button>
-          <button onClick={handleCancel}>
-            <MdOutlineCancel size={24} />
-          </button>
+          <div className="flex gap-2">
+            <button onClick={handleSave} className="btn btn-sm btn-success">
+              <GiSave size={24} color="white" />
+            </button>
+            <button onClick={handleCancel} className="btn btn-sm btn-error">
+              <MdOutlineCancel size={24} color="white" />
+            </button>
+          </div>
         </div>
       )}
-      <div className="w-full">
-        <div>
-          {formations.map((item) => (
-            <div key={item._id}>
-              <p className="p-2"> {item.name} </p>
-              <p className="p-2"> {item.level} </p>
-              <p className="p-2"> {item.year} </p>
-              {/* <ul>
-                {item.skills.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-                ))}
-              </ul> */}
-              <button
-                onClick={() => handleDelete(item._id)}
-                className="btn btn-primary btn-sm my-1"
-              >
-                <RiDeleteBinLine size={24} color="white" />
-              </button>
-            </div>
-          ))}
-        </div>
+      <div className="w-full space-y-4">
+        {formations.map((item) => (
+          <div key={item._id} className="border border-gray-300 rounded-lg p-4">
+            <p className="p-2">{item.name}</p>
+            <p className="p-2">{item.level}</p>
+            <p className="p-2">{item.year}</p>
+            <button
+              onClick={() => handleDelete(item._id)}
+              className="btn btn-primary btn-sm my-1"
+            >
+              <RiDeleteBinLine size={24} color="white" />
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );

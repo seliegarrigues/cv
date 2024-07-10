@@ -1,4 +1,3 @@
-//src/components/admin/AdminHobby.jsx
 import { useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { GiSave } from "react-icons/gi";
@@ -31,20 +30,19 @@ export default function AdminHobby() {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      fetchHobbies(); // Refresh the hobby list after deletion
+      fetchHobbies();
     }
   }
 
   async function handleSave() {
     if (hobby !== "") {
-      console.log(hobby); // Log the new hobby
-      // Add code to save the new hobby to the server
+      console.log(hobby);
       const response = await fetch(`${BASE_URL}/hobby`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ description:hobby }),
+        body: JSON.stringify({ description: hobby }),
       });
       if (response.ok) {
         const data = await response.json();
@@ -64,15 +62,18 @@ export default function AdminHobby() {
   }
 
   return (
-    <div>
-      <h2 className="text text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl mb-2">
+    <div className="space-y-4">
+      <h2 className="text-4xl text-center text-white bg-blue-600 p-2 rounded-3xl">
         Loisirs
       </h2>
-      <button onClick={addHobby} className="btn btn-sm">
+      <button
+        onClick={addHobby}
+        className="btn btn-sm flex items-center justify-center"
+      >
         <GrAdd size={24} color="blue" title="Ajouter" />
       </button>
       {isAdd && (
-        <div className="flex gap-2">
+        <div className="flex flex-col md:flex-row gap-2">
           <input
             placeholder="Ajouter un nouveau loisir"
             type="text"
@@ -80,26 +81,32 @@ export default function AdminHobby() {
             onChange={(e) => setHobby(e.target.value)}
             value={hobby}
           />
-          <button onClick={handleSave}>
-            <GiSave size={24} color="green" />
-          </button>
-          <button onClick={handleCancel}>
-            <MdOutlineCancel size={24} />
-          </button>
+          <div className="flex gap-2">
+            <button onClick={handleSave} className="btn btn-sm btn-success">
+              <GiSave size={24} color="white" />
+            </button>
+            <button onClick={handleCancel} className="btn btn-sm btn-error">
+              <MdOutlineCancel size={24} color="white" />
+            </button>
+          </div>
         </div>
       )}
-      {hobbies.map((item) => (
-        <div key={item._id} className="flex justify-between items-center">
-          <p>{item.description}</p>
-         
-          <button
-            onClick={() => handleDelete(item._id)}
-            className="btn btn-primary btn-sm my-1"
+      <div className="space-y-2">
+        {hobbies.map((item) => (
+          <div
+            key={item._id}
+            className="flex flex-col md:flex-row justify-between items-center border border-gray-300 rounded-lg p-4"
           >
-            <RiDeleteBinLine size={24} color="white" />
-          </button>
-        </div>
-      ))}
+            <p className="text-lg">{item.description}</p>
+            <button
+              onClick={() => handleDelete(item._id)}
+              className="btn btn-primary btn-sm mt-2 md:mt-0"
+            >
+              <RiDeleteBinLine size={24} color="white" />
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
