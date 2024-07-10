@@ -37,14 +37,14 @@ export default function AdminFormation() {
   }
 
   async function handleSave() {
-    if (name !== "" && level !== "" && year !=="") {
+    // if (name !== "" && level !== "" && year !=="") {
       console.log(name);
       const response = await fetch(`${url}/formation`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, level, year }), // or ({name : xxx, level: xxx})
+        body: JSON.stringify({ name,level, year }), // or ({name : xxx, level: xxx})
       });
       if (response.ok) {
         const data = await response.json();
@@ -56,7 +56,7 @@ export default function AdminFormation() {
        
         setIsAdd(false); // Hide the add form after saving
       }
-    }
+    // }
   }
 
   function handleCancel() {
@@ -85,6 +85,20 @@ export default function AdminFormation() {
             className="input input-bordered input-primary w-full"
             onChange={(e) => setName(e.target.value)}
             value={name}
+          />
+          <input
+            placeholder="Ajouter la période"
+            type="text"
+            className="input input-bordered input-primary w-full"
+            onChange={(e) => setLevel(e.target.value)}
+            value={level}
+          />
+          <input
+            placeholder="Ajouter le niveau"
+            type="text"
+            className="input input-bordered input-primary w-full"
+            onChange={(e) => setYear(e.target.value)}
+            value={year}
           />
           <button onClick={handleSave}>
             <GiSave size={24} color="green" />

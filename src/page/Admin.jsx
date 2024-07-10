@@ -28,16 +28,16 @@ function handleSubmit (e) {
 
 
 
-  // if (!islogged){ // une fonction doit retourner quelque chose soit is logged soit la div suivante
-  //   return(
+  if (!islogged){ // une fonction doit retourner quelque chose soit is logged soit la div suivante
+    return(
      
-  //     <Login username={username} 
-  //     password={password} 
-  //     setUsername={(e)=>setUsername(e.target.value)} 
-  //     setPassword={(e)=>setPassword (e.target.value)} 
-  //     handleSubmit = {handleSubmit}/>
-  //   )
-  // }
+      <Login username={username} 
+      password={password} 
+      setUsername={(e)=>setUsername(e.target.value)} 
+      setPassword={(e)=>setPassword (e.target.value)} 
+      handleSubmit = {handleSubmit}/>
+    )
+  }
   return (
     <div className='flex gap-5 p-5 max-md:flex-col'>
       <div>

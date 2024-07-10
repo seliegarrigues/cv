@@ -23,7 +23,7 @@ export default function Hobby() {
         Centre d'intérêts
       </h2>
       <ul>
-        {hobbies.map(item => <li key={item._id}> {item.hobby}</li>)}
+        {hobbies.map((item) => <li key={item._id}> {item.description}</li>)}
       </ul>
     </div>
   );
